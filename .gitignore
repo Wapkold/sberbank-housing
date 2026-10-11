@@ -1,0 +1,16 @@
+# Данные скачиваются скриптом download_data.py
+data/
+
+# Большие артефакты прогона (пересобираются analysis.py)
+train_clean.csv.gz
+lgbm_model.txt
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# IDE и ОС
+.idea/
+.vscode/
+.DS_Store

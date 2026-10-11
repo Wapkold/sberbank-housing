@@ -1,0 +1,165 @@
+{
+  "raw_shape": [
+    30471,
+    292
+  ],
+  "period": [
+    "2011-08-20",
+    "2015-06-30"
+  ],
+  "cols_with_na_before": 51,
+  "cells_na_before_pct": 2.93,
+  "fixes": {
+    "full_sq < 10 м²": 29,
+    "full_sq > 1000 м²": 1,
+    "life_sq > full_sq": 30,
+    "life_sq < 5 м²": 435,
+    "kitch_sq >= full_sq": 52,
+    "kitch_sq < 2 м²": 6235,
+    "build_year вне 1860–2018": 906,
+    "max_floor = 0": 550,
+    "floor > max_floor": 947,
+    "floor = 0": 9,
+    "num_room = 0": 14,
+    "state = 33 → 3": 1
+  },
+  "dropped_fake_low_prices": 1833,
+  "cells_na_after": 0,
+  "clean_shape": [
+    28638,
+    337
+  ],
+  "sub_area_price_sqm_range_k": [
+    45,
+    274
+  ],
+  "valid_period": [
+    "2014-11-07",
+    "2015-06-30"
+  ],
+  "model": {
+    "best_iteration": 502,
+    "rmsle_valid": 0.2537,
+    "rmsle_baseline_median": 0.5133,
+    "r2_log_valid": 0.736,
+    "mape_valid_pct": 17.57
+  },
+  "shap_top15": {
+    "full_sq": {
+      "mean_abs_shap": 0.17095,
+      "share_pct": 21.27
+    },
+    "sub_area": {
+      "mean_abs_shap": 0.11755,
+      "share_pct": 14.62
+    },
+    "num_room": {
+      "mean_abs_shap": 0.03119,
+      "share_pct": 3.88
+    },
+    "life_sq": {
+      "mean_abs_shap": 0.02897,
+      "share_pct": 3.6
+    },
+    "cafe_count_2000": {
+      "mean_abs_shap": 0.02144,
+      "share_pct": 2.67
+    },
+    "life_share": {
+      "mean_abs_shap": 0.01614,
+      "share_pct": 2.01
+    },
+    "cafe_count_3000": {
+      "mean_abs_shap": 0.01495,
+      "share_pct": 1.86
+    },
+    "sport_count_3000": {
+      "mean_abs_shap": 0.01356,
+      "share_pct": 1.69
+    },
+    "cpi": {
+      "mean_abs_shap": 0.01294,
+      "share_pct": 1.61
+    },
+    "floor": {
+      "mean_abs_shap": 0.01154,
+      "share_pct": 1.44
+    },
+    "usdrub": {
+      "mean_abs_shap": 0.01037,
+      "share_pct": 1.29
+    },
+    "eurrub": {
+      "mean_abs_shap": 0.00879,
+      "share_pct": 1.09
+    },
+    "age_at_sale": {
+      "mean_abs_shap": 0.00854,
+      "share_pct": 1.06
+    },
+    "build_year": {
+      "mean_abs_shap": 0.00842,
+      "share_pct": 1.05
+    },
+    "state": {
+      "mean_abs_shap": 0.00807,
+      "share_pct": 1.0
+    }
+  },
+  "shap_by_group_pct": {
+    "Площадь и планировка": 32.6,
+    "Инфраструктура в радиусе 0.5–5 км": 20.9,
+    "Район (sub_area)": 14.6,
+    "Расстояния (центр, метро, МКАД и т.д.)": 13.2,
+    "Время и макроэкономика": 9.3,
+    "Дом, этаж, состояние, тип сделки": 7.5,
+    "Характеристики района (население, школы и пр.)": 1.9
+  },
+  "effect_p90_vs_p10": {
+    "full_sq": {
+      "p10": 34.0,
+      "p90": 79.0,
+      "price_multiplier_p90_vs_p10": 1.993
+    },
+    "num_room": {
+      "p10": 1.0,
+      "p90": 3.0,
+      "price_multiplier_p90_vs_p10": 1.129
+    },
+    "life_sq": {
+      "p10": 19.0,
+      "p90": 52.0,
+      "price_multiplier_p90_vs_p10": 1.104
+    },
+    "cafe_count_2000": {
+      "p10": 1.0,
+      "p90": 82.0,
+      "price_multiplier_p90_vs_p10": 1.058
+    },
+    "life_share": {
+      "p10": 0.5,
+      "p90": 1.0,
+      "price_multiplier_p90_vs_p10": 0.972
+    },
+    "cafe_count_3000": {
+      "p10": 2.0,
+      "p90": 177.0,
+      "price_multiplier_p90_vs_p10": 1.048
+    },
+    "sport_count_3000": {
+      "p10": 1.0,
+      "p90": 44.0,
+      "price_multiplier_p90_vs_p10": 1.033
+    },
+    "cpi": {
+      "p10": 373.8,
+      "p90": 452.0,
+      "price_multiplier_p90_vs_p10": 1.057
+    },
+    "floor": {
+      "p10": 2.0,
+      "p90": 15.0,
+      "price_multiplier_p90_vs_p10": 1.053
+    }
+  }
+}
