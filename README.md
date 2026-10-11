@@ -29,7 +29,7 @@
 
 ## Данные
 
-* Источник: соревнование Kaggle [Sberbank Russian Housing Market](https://www.kaggle.com/c/sberbank-russian-housing-market) (2017). Kaggle API из этой среды недоступен, поэтому файлы взяты из публичной копии на GitHub ([catherinehata/Sberbank-Russian-Housing-Market](https://github.com/catherinehata/Sberbank-Russian-Housing-Market)); размеры совпадают с оригиналом: `train` 30 471 × 292, `test` 7 662 × 291, `macro` 2 484 × 100.
+* Источник: соревнование Kaggle [Sberbank Russian Housing Market](https://www.kaggle.com/c/sberbank-russian-housing-market) (2017). Скрипт `download_data.py` берёт файлы из публичной копии на GitHub (на Kaggle нужен аккаунт и принятые правила соревнования) ([catherinehata/Sberbank-Russian-Housing-Market](https://github.com/catherinehata/Sberbank-Russian-Housing-Market)); размеры совпадают с оригиналом: `train` 30 471 × 292, `test` 7 662 × 291, `macro` 2 484 × 100.
 * **Актуальность.** Это самые свежие данные Сбербанка такого рода в открытом доступе: сделки в `train` с цены идут с 20.08.2011 по 30.06.2015, `test` (без цен) с 01.07.2015 по 30.05.2016, макропоказатели до 19.10.2016. Сбербанк больше не публиковал обновлений этого датасета. Поэтому выводы описывают московский рынок 2011–2015 годов, а не текущий.
 * В `test` нет целевой переменной, поэтому модель обучена и проверена только на `train`; `test` лежит в `data/` для полноты.
 
@@ -62,16 +62,25 @@ LightGBM, целевая переменная `log(1 + price_doc)`, 334 приз
 
 ![Прогноз против факта](figures/07_pred_vs_actual.png)
 
+## Запуск
+
+```bash
+pip install -r requirements.txt
+python download_data.py          # train.csv, test.csv, macro.csv в data/
+python analysis.py data .        # очистка, EDA, модель, SHAP; пишет файлы и figures/ сюда
+```
+
 ## Файлы
 
 | Файл | Что внутри |
 |---|---|
-| `analysis.py` | весь пайплайн: `python3 analysis.py data out` |
-| `data/` | исходные `train.csv.zip`, `test.csv`, `macro.csv` |
-| `train_clean.csv.gz` | очищенный train с макро и новыми признаками |
+| `analysis.py` | весь пайплайн: очистка, EDA, LightGBM, SHAP |
+| `download_data.py` | скачивание исходных данных в `data/` |
+| `figures/` | 14 графиков: пропуски, EDA, SHAP, зависимости |
 | `shap_importance.csv` | средний \|SHAP\| и доля для каждого признака |
 | `shap_importance_by_group.csv` | вклад групп признаков |
+| `spearman_top20.csv` | 20 признаков с наибольшей корреляцией Спирмена с ценой |
+| `missing_before.csv` | доля пропусков по признакам до очистки |
 | `report.json` | все числа: исправления, метрики, эффекты |
-| `figures/` | 14 графиков: пропуски, EDA, SHAP, зависимости |
 
-Зависимости: `pandas numpy scikit-learn lightgbm shap matplotlib`.
+`train_clean.csv.gz` (очищенный train, 17 МБ) и `lgbm_model.txt` (обученная модель, 2,5 МБ) в репозиторий не входят: их создаёт `analysis.py`.
